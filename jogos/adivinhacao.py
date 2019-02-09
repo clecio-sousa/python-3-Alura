@@ -1,8 +1,11 @@
+import random
+
 print("*********************************")
 print("BEM VINDO AO JOGO DE ADIVINHAÇÃO!")
 print("*********************************")
 
-numero_secreto = 42
+numero_secreto = random.randrange(100) # FUNCAO RANDOM QUE GERA NUMEROS ALEATORIOS DE 0 A 99
+print(numero_secreto)
 tentativas = 3
 
 for rodada in range(1, tentativas + 1):
@@ -29,7 +32,12 @@ for rodada in range(1, tentativas + 1):
     elif (maior):
         print("O numero eh menor")
 
+
+random.random()
 print("FIM DE JOGO")
+
+
+
 
 
 
