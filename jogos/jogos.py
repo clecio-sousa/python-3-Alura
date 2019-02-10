@@ -3,7 +3,7 @@ import forca
 
 def escolhe_jogo():
     print("*********************************")
-    print("ESCOLHA O SEU JOGO!!!")
+    print("ESCOLHA O SEU JOGO!")
     print("*********************************")
 
     print("(1)ADIVINHAÇÃO (2)FORCA")
