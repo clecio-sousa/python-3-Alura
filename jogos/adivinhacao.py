@@ -24,7 +24,6 @@ def jogar_adivinhacao():
         tentativas = 20 # NRO DE TENTATIVAS
     elif (nivel == 2):
         tentativas = 10 #NRO DE TENTATIVAS
-
     else:
         tentativas = 5
 
@@ -52,14 +51,14 @@ def jogar_adivinhacao():
 
             elif(maior):
                 print("O numero eh menor")
-            pontos_perdidos = abs(numero_secreto - chute)#INCLUSAO DA FUNCAO ABS PRA EVITAR QUE HAJANRO NEGATIVO
+            pontos_perdidos = abs(numero_secreto - chute)#INCLUSAO DA FUNCAO ABS PRA EVITAR QUE HAJA NRO NEGATIVO
             pontos = pontos - pontos_perdidos #TOTAL DE PONTOS
 
 
     print("O numero era ", numero_secreto)
     print("FIM DE JOGO")
 
-if(__name__=="__main__"):
+if(__name__== "__main__"):
     jogar_adivinhacao()
 
 
