@@ -1,27 +1,15 @@
 import random
 def jogar_forca():
 
-    print("*********************************")
-    print("BEM VINDO AO JOGO DA FORCA!")
-    print("*********************************")
+    mensagem_abertura()# funcao da mensagem de boas vindas ao jogo
+    palavra_secreta = carrega_palavra_secreta()# funcao do arquivo que contem a lista de palavras
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
 
-    arquivo = open("frutas.txt", 'r')
-    palavras = []
 
-    for linha in arquivo:
-        linha = linha.strip()
-        palavras.append(linha)
-
-    arquivo.close()
-    numero = random.randrange(0,len(palavras))
-
-    palavra_secreta = palavras[numero].upper()
-    letras_acertadas =["_" for letra in palavra_secreta]# List comprehension dentro da lista
 
     acertou = False
     enforcou = False
     erros = 0
-
 
     # enquanto nao enforcou e nao acertou faça
     while(not enforcou and not acertou):
@@ -55,6 +43,30 @@ def jogar_forca():
     else:
         print("VC PERDEU!!!")
     print("FIM DE JOGO")
+
+""""------LISTA DE FUNCOES----"""
+
+def mensagem_abertura():
+    print("*********************************")
+    print("BEM VINDO AO JOGO DA FORCA!")
+    print("*********************************")
+
+
+def carrega_palavra_secreta():
+    arquivo = open("frutas.txt", 'r')
+    palavras = []
+
+    for linha in arquivo:
+        linha = linha.strip()
+        palavras.append(linha)
+    arquivo.close()
+    numero = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[numero].upper()
+
+    return palavra_secreta
+def inicializa_letras_acertadas(palavra_secreta):
+
+    return ["_" for letra in palavra_secreta]# List comprehension dentro da lista
 
 if(__name__ == "__main__"):
     jogar_forca()
