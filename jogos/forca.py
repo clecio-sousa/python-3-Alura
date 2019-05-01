@@ -5,26 +5,16 @@ def jogar_forca():
     palavra_secreta = carrega_palavra_secreta()# funcao do arquivo que contem a lista de palavras
     letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
 
-
-
     acertou = False
     enforcou = False
     erros = 0
 
     # enquanto nao enforcou e nao acertou faça
     while(not enforcou and not acertou):
-
-        chute = input("Qual letra...?")
-        chute = chute.strip().upper()# retira espacos em branco
-
+        chute = pede_chute() # chute do usuario
         if (chute in palavra_secreta):
-            posicao = 0
-            for letra in palavra_secreta:
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta) #chamada de funcao caso o chute esteja correto
 
-                if (chute.upper()==letra.upper()):# coloca todas as letras em maiuscula
-                    letras_acertadas[posicao] = letra
-                    #print("Encontrei a letra {} na posição {}" .format(letra, index))
-                posicao += 1
         else:
             erros += 1
             print("Ops, vc errou!! Faltam {} tentativas." .format(6 - erros))
@@ -39,9 +29,9 @@ def jogar_forca():
         letras_faltando = str(letras_acertadas.count("_"))
         print("Ainda faltam {} letras".format(letras_faltando))
     if(acertou):
-        print("VOCE GANHOU!!")
+        mensagem_vencedor()
     else:
-        print("VC PERDEU!!!")
+        mensagem_perdedor()
     print("FIM DE JOGO")
 
 """"------LISTA DE FUNCOES----"""
@@ -64,9 +54,31 @@ def carrega_palavra_secreta():
     palavra_secreta = palavras[numero].upper()
 
     return palavra_secreta
+
 def inicializa_letras_acertadas(palavra_secreta):
 
     return ["_" for letra in palavra_secreta]# List comprehension dentro da lista
+
+def pede_chute():
+    chute: str = input("Qual a letra...?")
+    chute = chute.strip().upper()
+    return chute
+
+
+def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
+    posicao = 0
+    for letra in palavra_secreta:
+
+        if (chute.upper() == letra.upper()):  # coloca todas as letras em maiuscula
+            letras_acertadas[posicao] = letra
+            # print("Encontrei a letra {} na posição {}" .format(letra, index))
+        posicao += 1
+
+def mensagem_vencedor():
+    print("VOCÊ GANHOU!!!")
+
+def mensagem_perdedor():
+    print("VOCÊ FOI ENFORCADO =(..")
 
 if(__name__ == "__main__"):
     jogar_forca()
